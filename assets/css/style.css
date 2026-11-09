@@ -1,0 +1,128 @@
+/* 1. Import JetBrains Mono font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* 2. Define our color palette (easy to change later!) */
+:root {
+    --bg-color: #1e1e1e;       /* Dark gray background (like VS Code) */
+    --text-color: #d4d4d4;     /* Soft off-white text (not harsh pure white) */
+    --accent-color: #9cdcfe;   /* Soft blue for links and highlights */
+    --nav-bg: #252526;         /* Slightly lighter dark for the top bar */
+}
+
+/* 3. Global reset and font setup */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace; /* The terminal font */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6; /* Comfortable reading height */
+    font-size: 16px;
+}
+
+/* 4. Container to keep content readable (max ~75 characters wide) */
+.container {
+    max-width: 75ch; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 5. Navigation Bar */
+nav {
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid #333;
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 75ch;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Makes it wrap nicely on mobile */
+}
+
+.logo {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* 6. Main Content Area */
+main {
+    padding: 40px 20px;
+    min-height: 80vh; /* Pushes the footer to the bottom of the screen */
+}
+
+h1, h2, h3 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* 7. Links */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 8. Footer */
+footer {
+    background-color: var(--nav-bg);
+    border-top: 1px solid #333;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* 9. Blinking Cursor Effect */
+.cursor::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+    color: var(--accent-color);
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* 10. Mobile adjustments (makes nav stack vertically on small screens) */
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
